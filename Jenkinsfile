@@ -9,10 +9,7 @@ pipeline {
     }
     stage('deploy kubernetes'){
       steps {
-        sh  '''
-         export KUBECONFIG=/var/lib/jenkins/cjone-kube-test_kubeconfig.yaml
-         '''
-        kubernetesDeploy(kubeconfigId: 'cjone-kube',
+        kubernetesDeploy(kubeconfigId: 'kubeconfig',
                          configs: '*.yaml')
       }
     }    
