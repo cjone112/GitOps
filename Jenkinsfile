@@ -7,8 +7,11 @@ pipeline {
         git url: 'https://github.com/cjone112/GitOps', branch: 'main'
       }
     }
-    stage('k8s deploy'){
+    stage('deploy kubernetes'){
       steps {
+        sh  '''
+         export KUBECONFIG=/var/lib/jenkins/cjone-kube-test_kubeconfig.yaml
+         '''
         kubernetesDeploy(kubeconfigId: 'cjone-kube',
                          configs: '*.yaml')
       }
