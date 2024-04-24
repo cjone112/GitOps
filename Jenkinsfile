@@ -9,7 +9,7 @@ pipeline {
     }
     stage('k8s deploy'){
       steps {
-        kubernetesDeploy(kubeconfigId: 'kubeconfig',
+        kubernetesDeploy(kubeconfigId: 'cjone-kube',
                          configs: '*.yaml')
       }
     }    
